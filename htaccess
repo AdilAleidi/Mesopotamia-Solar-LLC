@@ -1,0 +1,4 @@
+Deny from all
+# In your .htaccess or Python config
+# Example for Python 3.9
+AddHandler application/x-httpd-3.9.6 .py

@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Home - {{ company_name }}{% endblock
+%} {% block description %}Modern solar solutions inspired by Mesopotamia's
+legacy of innovation{% endblock %} {% block content %}
+<section class="hero" aria-labelledby="main-heading">
+  <div class="hero-content">
+    <h1 id="main-heading">Welcome to Mesopotamia Solar</h1>
+    <p>Modern solar solutions inspired by Mesopotamia's legacy of innovation</p>
+    <div class="cta-wrapper">
+      <a
+        href="{{ url_for('contact') }}"
+        class="cta-button"
+        aria-label="Contact us for solar solutions"
+      >
+        Contact Us Now
+      </a>
+    </div>
+  </div>
+</section>
+
+{% if featured_products %}
+<section class="featured-products">
+  <h2>Our Featured Solutions</h2>
+  <div class="product-grid">
+    {% for product in featured_products %}
+    <div class="product-card">
+      <img
+        src="{{ url_for('static', filename='images/products/' + product.image) }}"
+        alt="{{ product.name }}"
+        loading="lazy"
+      />
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <a
+        href="{{ url_for('product', id=product.id) }}"
+        class="product-link"
+        aria-label="View {{ product.name }} details"
+      >
+        View Details
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %} {% endblock %} {% block scripts %}
+<script>
+  // Initialize any home page specific scripts here
+  document.addEventListener("DOMContentLoaded", function () {
+    // Testimonial slider initialization
+    const slider = document.querySelector(".testimonial-slider");
+    if (slider) {
+      // Add slider logic here
+    }
+  });
+</script>
+{% endblock %}

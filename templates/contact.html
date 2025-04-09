@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block content %}
+<div class="contact-page">
+  <div class="contact-content-wrapper">
+    <form method="POST" action="{{ url_for('contact') }}" class="solar-form">
+      {{ form.hidden_tag() }}
+      <h1 style="text-align: center; color: #184900">Contact Us</h1>
+
+      <div class="solar-form-group">
+        <label for="name">Name:</label>
+        {{ form.name(class="solar-input", size=32) }}
+      </div>
+
+      <div class="solar-form-group">
+        <label for="email">Email:</label>
+        {{ form.email(class="solar-input", size=32) }}
+      </div>
+
+      <div class="solar-form-group">
+        <label for="message">Message:</label>
+        {{ form.message(class="solar-textarea", cols=40, rows=5) }}
+      </div>
+
+      <div>{{ form.submit(class="solar-button") }}</div>
+
+      {% if messages %}
+      <ul class="success-message">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </form>
+
+    <div class="contact-info">
+      <h2>Need Help?</h2>
+      <p>
+        Email us at:
+        <a href="mailto:support@mesopotamiasolar.com"
+          >support@mesopotamiasolar.com</a
+        >
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}
